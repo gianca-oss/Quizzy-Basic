@@ -900,13 +900,23 @@
                 
                 let consolidatedHTML = '';
                 
-                // Calculate total questions for internal use
+                // Summary header
                 const totalQuestions = allResults.reduce((sum, r) => sum + r.parsed.questions.length, 0);
+                consolidatedHTML += `
+                    <div class="result-item">
+                        <div class="result-header">📊 Riepilogo Analisi Completa</div>
+                        <div class="result-summary">
+                            <p><strong>Immagini analizzate:</strong> ${images.length}</p>
+                            <p><strong>Domande identificate:</strong> ${totalQuestions}</p>
+                        </div>
+                    </div>
+                `;
                 
-                // Unified answers table - ONLY THE TABLE, NO TITLES
+                // Unified answers table
                 if (totalQuestions > 0) {
                     consolidatedHTML += `
                         <div class="result-item">
+                            <div class="result-header">✅ Tabella Risposte Unificate</div>
                             <div class="result-content">
                                 <table>
                                     <thead>
